@@ -4,8 +4,47 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+     <!-- Favicon -->
+     <link rel="shortcut icon" type="image/x-icon" href="../src/assets/img/favicon.png">
     <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!--Mulish Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script>
+      const showMenu = (toggleId, navbarId,bodyId) =>{
+            const toggle = document.getElementById(toggleId),
+            navbar = document.getElementById(navbarId),
+            bodypadding = document.querySelector(bodyId)
+
+            if(toggle && navbar){
+                toggle.addEventListener('click', ()=>{
+                    // APARECER MENU
+                    navbar.classList.toggle('show')
+                    // ROTATE TOGGLE
+                    toggle.classList.toggle('rotate')
+                    // PADDING BODY
+                    bodypadding.classList.toggle('expander')
+                })
+            }
+        }
+        showMenu('nav-toggle','navbar','#app')
+
+        // LINK ACTIVE COLOR
+        const linkColor = document.querySelectorAll('.nav__link');   
+        function colorLink(){
+            linkColor.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            console.log("POR COLORLINK PASA")
+        }
+
+        linkColor.forEach(l => l.addEventListener('click', colorLink));
+    </script>
   </head>
   <body>
     <noscript>
@@ -13,5 +52,6 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    
   </body>
 </html>
